@@ -34,7 +34,7 @@ namespace Brickbreaker
 
         public void Draw()
         {
-            spriteBatch.Draw(_imgPaddle, new Vector2(posX, posY), null, Color.White, 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 0);
+            spriteBatch.Draw(_imgPaddle, new Vector2(posX, posY), null, Color.White, 0, Vector2.Zero, 1f, SpriteEffects.None, 0);
         }
 
         public void MoveLeft(float x)
