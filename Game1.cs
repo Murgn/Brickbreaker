@@ -16,6 +16,8 @@ namespace Brickbreaker
         private int screenWidth = 502;
         private int screenHeight = 700;
 
+        Input inp;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -30,6 +32,8 @@ namespace Brickbreaker
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
             graphics.ApplyChanges();
+
+            inp = new Input(screenWidth, screenHeight);
 
             base.Initialize();
         }
@@ -54,7 +58,14 @@ namespace Brickbreaker
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            //if (IsActive) { return; }
+
             // TODO: Add your update logic here
+
+            inp.Update();
+            if (inp.KeyDown(Keys.Left)) { paddle.MoveLeft(5f); }
+            if (inp.KeyDown(Keys.Right)) { paddle.MoveRight(5f); }
+            if(inp.left_down) { /*SERVE BALL*/ }
 
             base.Update(gameTime);
         }
