@@ -6,13 +6,17 @@ namespace Brickbreaker
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
         private GameContent gameContent;
+
+        private Paddle paddle;
+        private int screenWidth = 502;
+        private int screenHeight = 700;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
         }
@@ -21,16 +25,28 @@ namespace Brickbreaker
         {
             // TODO: Add your initialization logic here
 
+
+            screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
+            graphics.ApplyChanges();
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
 
             gameContent = new GameContent(Content);
+
+            int paddleX = (screenWidth - gameContent.imgPaddle.Width) / 2;
+            int paddleY = screenHeight - 100;
+            paddle = new Paddle(paddleX, paddleY, screenWidth, spriteBatch, gameContent);
         }
 
         protected override void Update(GameTime gameTime)
@@ -48,6 +64,9 @@ namespace Brickbreaker
             GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            paddle.Draw();
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -12,16 +12,16 @@ namespace Brickbreaker
 {
     class GameContent
     {
-        public Texture2D imgBrick { get; set; }
-        public Texture2D imgPaddle { get; set; }
-        public Texture2D imgBall { get; set; }
-        public Texture2D imgPixel { get; set; }
-        public SoundEffect startSound { get; set; }
-        public SoundEffect brickSound { get; set; }
-        public SoundEffect paddleBounceSound { get; set; }
-        public SoundEffect wallBounceSound { get; set; }
-        public SoundEffect missSound { get; set; }
-        public SpriteFont labelFont { get; set; }
+        public Texture2D imgBrick;
+        public Texture2D imgPaddle;
+        public Texture2D imgBall;
+        public Texture2D imgPixel;
+        public SoundEffect startSound;
+        public SoundEffect brickSound;
+        public SoundEffect paddleBounceSound;
+        public SoundEffect wallBounceSound;
+        public SoundEffect missSound;
+        public SpriteFont labelFont;
 
         public GameContent(ContentManager Content)
         {
