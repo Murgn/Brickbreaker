@@ -12,6 +12,7 @@ namespace Brickbreaker
 
         private Paddle paddle;
         private Wall wall;
+        private GameBorder gameBorder;
         private int screenWidth = 502;
         private int screenHeight = 700;
 
@@ -45,6 +46,7 @@ namespace Brickbreaker
             int paddleY = screenHeight - 100;
             paddle = new Paddle(paddleX, paddleY, screenWidth, spriteBatch, gameContent);
             wall = new Wall(1, 50, spriteBatch, gameContent);
+            gameBorder = new GameBorder(screenWidth, screenHeight, spriteBatch, gameContent);
         }
 
         protected override void Update(GameTime gameTime)
@@ -65,6 +67,7 @@ namespace Brickbreaker
             spriteBatch.Begin();
             paddle.Draw();
             wall.Draw();
+            gameBorder.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);
