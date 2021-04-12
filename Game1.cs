@@ -11,6 +11,7 @@ namespace Brickbreaker
         private GameContent gameContent;
 
         private Paddle paddle;
+        private Wall wall;
         private int screenWidth = 502;
         private int screenHeight = 700;
 
@@ -24,10 +25,6 @@ namespace Brickbreaker
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
-
-            screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-            screenWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
             graphics.PreferredBackBufferWidth = screenWidth;
             graphics.PreferredBackBufferHeight = screenHeight;
@@ -47,6 +44,7 @@ namespace Brickbreaker
             int paddleX = (screenWidth - gameContent.imgPaddle.Width) / 2;
             int paddleY = screenHeight - 100;
             paddle = new Paddle(paddleX, paddleY, screenWidth, spriteBatch, gameContent);
+            wall = new Wall(1, 50, spriteBatch, gameContent);
         }
 
         protected override void Update(GameTime gameTime)
@@ -66,6 +64,7 @@ namespace Brickbreaker
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             paddle.Draw();
+            wall.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);
