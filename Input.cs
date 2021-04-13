@@ -59,23 +59,6 @@ namespace Brickbreaker
             if ((control_down) && (!old_control_down)) control_press = true;
             if ((alt_down) && (!old_alt_down)) alt_press = true;
 
-            // Input thats kind of like Unity
-            if (!kb.IsKeyDown(Keys.D) || !kb.IsKeyDown(Keys.A)) Horizontal = 0;
-            else if (kb.IsKeyDown(Keys.D)) Horizontal = 1;
-            else if (kb.IsKeyDown(Keys.A)) Horizontal = -1;
-            if (!kb.IsKeyDown(Keys.W) || !kb.IsKeyDown(Keys.S)) Vertical = 0;
-            else if (kb.IsKeyDown(Keys.W)) Vertical = 1;
-            else if (kb.IsKeyDown(Keys.S)) Vertical = -1;
-
-            // Mouse Input
-            left_click = mid_click = right_click = left_down = rightStick_down = mid_down = false;
-            if (ms.LeftButton == ButtonDown) left_down = true;
-            if (ms.MiddleButton == ButtonDown) mid_down = true;
-            if (ms.RightButton == ButtonDown) right_down = true;
-            if ((left_down) && (oms.LeftButton == ButtonUp)) left_click = true;
-            if ((mid_down) && (oms.MiddleButton == ButtonUp)) mid_click = true;
-            if ((right_down) && (oms.RightButton == ButtonUp)) right_click = true;
-
             // Gamepad Input
             A_down = B_down = X_down = Y_down = RB_down = LB_down = start_down = back_down = start_down = back_down = leftStick_down = rightStick_down = false;
             A_press = B_press = X_press = Y_press = RB_press = LB_press = start_press = back_press = start_press = back_press = leftStick_press = rightStick_press = false;
